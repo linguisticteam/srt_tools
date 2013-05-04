@@ -1,0 +1,254 @@
+/**
+ * GENERAL LAYOUT
+ */
+#srtdiff_form {
+	position:relative;
+	margin:10px auto;
+	text-decoration:none;
+	width:450px;
+	border:1px solid #AAA;
+}
+
+#srtform_error {
+	margin:5px auto;
+	width:450px;
+	min-height:45px;
+	/*border:1px solid red;*/
+}
+
+.errorShown {
+	text-align:center;
+ 	color: #FF0000;
+	font-weight:bold;	
+}
+
+#header{
+	position:fixed;
+	opacity: 0.9;
+	top:0;
+	width:100%;
+	z-index:100;
+}
+
+#srtdiff_banner #banner_title{
+	letter-spacing:.5em;
+	float:left;
+	padding:5px;
+	margin:0;
+}
+
+#srtdiff_banner a{
+	padding:0;
+	margin:0;
+	text-decoration:none;
+	color:#fff;
+}
+
+#srtdiff_banner #srtdiff_index{
+	float:right;
+	margin:5px 10px;
+	
+}
+
+#srtdiff_banner a:hover{
+	text-decoration:underline;
+}
+
+#srtdiff_form form, #srtdiff_form fieldset {
+	border:none;
+	text-align:center;
+}
+
+#srtdiff_form input.inputFile {
+	float:right;
+	width:300px;
+}
+
+#srtdiff_form label {
+	text-align:left;
+}
+
+#srtdiff_form div {
+	display:block;
+	padding:7px 0;
+}
+
+#srtdiff_submit {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	border:1px solid #AAA;
+	display:inline-block;
+	color:#222;
+	font-family:arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:7px 24px;
+	text-decoration:none;
+}
+#srtdiff_submit:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color:#dfdfdf;
+	color:#000;
+	
+}
+#srtdiff_submit:active {
+	position:relative;
+	top:1px;
+}
+
+
+#srtdiff_controls {
+	clear:both;
+	height:33px;
+	background-color:#222;
+	color:#fff;
+	padding:20px 0 5px 0;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+#srtdiff_controls div{
+	display:inline;
+	padding:0 5px 5px 5px;
+}
+
+#srtdiff_controls label{
+	padding-left:10px;
+}
+
+#srtdiff_controls input{
+	padding-left:10px;
+}
+
+#content{
+	margin:53px auto;
+}
+
+#srtdiff_manual{
+	padding:80px 20px;
+}
+
+#srtdiff_formOptions{
+	font-size:90%;
+	text-align:left;
+	margin:30px;
+}
+
+#srtdiff_formOptions input{
+	vertical-align:middle;
+	margin:0 10px 0 10px;
+}
+
+#srtdiff_execTime{
+	clear:both;
+	margin-top:33px;
+}
+
+.tooltip {
+  border-bottom: 1px dotted #000000;
+  color: #000000; outline: none;
+  cursor: help; text-decoration: none;
+}
+
+.tooltip:hover span {
+  position: absolute;
+  left: .1em;
+  top: 290px;
+  z-index: 99;
+  margin-left: 0;
+  width: 420px;
+}
+.tooltip:hover img {
+  border: 0;
+  margin: -10px 0 0 -55px;
+  float: left;
+  position: absolute;
+}
+.tooltip:hover em {
+  font-size: 1.2em;
+  font-weight: bold;
+  display: block;
+  padding: 0.2em 0 0.6em 0;
+}
+.classic { padding: 0.8em 1em; }
+.custom { padding: 0.5em 0.8em 0.8em 2em; }
+* html a:hover { background: transparent; }
+.tooltip span {
+  margin-left: -999em;
+  position: absolute;
+}
+
+
+/**
+ * SUBTITLE COMPARE ELEMENTS
+ */
+ins {
+	text-decoration: none;
+	background-color: #CEF2AA;
+	color:#000;
+}
+
+del {
+	text-decoration: none;
+ 	background-color: #F2BFBD;
+	color:#000;
+}
+
+.strVisible {
+	display: block;
+}
+
+.noDisplay {
+	display: none;
+}
+
+ul,li,p {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	text-decoration: none;
+}
+
+#stringList>li,#srtdiff_error,.srtdiff_error {
+	text-decoration: none;
+	list-style: none;
+	margin: 5px;
+	padding: 15px 5px;
+	border: 1px solid #E3E3E3;
+	font-family:"Times New Roman",Georgia,Serif;
+	border-radius: 5px;
+}
+
+#stringList > li.changedString{
+	background-color:#F7FDFD;
+}
+
+#stringList > li.addedString{
+	background-color:#EEFAEB;
+}
+
+#stringList > li.deletedString{
+	background-color:#FFF5F4;
+}
+
+#stringList > li >p {
+	margin-top: 5px;
+}
+
+#stringList > li > p.bString {
+	font-style:italic;
+	color:#333;
+	letter-spacing:.05em;
+}
+
+#stringList .timestamps {
+	font:1em Courier New, Courier New, monospace;
+	letter-spacing:.1em;
+}
