@@ -293,7 +293,7 @@ class FineDiff {
 		}
 		$from=$old;
 		$to=$new;
-		//return $p;
+		return array($from,$to);
 	}
 	
 	private static function renderDiff($opcode, $from, $from_offset, $from_len) {

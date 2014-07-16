@@ -171,7 +171,10 @@ class SRTDiff {
 				if (strcmp($obj->string, $this->modified->srt[$startTime]->string) !== 0) {
 					$srt[$startTime] = new ResultString();
 					$srt[$startTime]->endGap = $this->gapCalc($this->modified->srt[$startTime]->end, $obj->end);
-					FineDiff::diff(&$obj->string, &$this->modified->srt[$startTime]->string);
+					$resultSrt = FineDiff::diff($obj->string, $this->modified->srt[$startTime]->string);
+					$obj->string=$resultSrt[0];
+					$this->modified->srt[$startTime]->string=$resultSrt[1];
+					
 					$srt[$startTime]->changedString = str_replace(array(chr(10), "\\n"), self::NEWLINE_SEP, $this->modified->srt[$startTime]->string);
 					$srt[$startTime]->status = self::STRING_CHANGED;
 					$srt[$startTime]->start = $startTime;
@@ -247,7 +250,11 @@ class SRTDiff {
 						} else {
 							$srt[$a['Old'][0]->start]->end = $a['New'][0]->end;
 							if (strcmp($a['Old'][0]->string, $a['New'][0]->string) !== 0) {
-								FineDiff::diff(&$a['Old'][0]->string, &$a['New'][0]->string);
+								$diffStr = FineDiff::diff($a['Old'][0]->string, $a['New'][0]->string);
+								$a['Old'][0]->string = $diffStr[0];
+								$a['New'][0]->string = $diffStr[1];
+								
+								
 							}
 							$srt[$a['Old'][0]->start]->oldString = str_replace(array(chr(10), "\\n"), self::NEWLINE_SEP, $a['Old'][0]->string);
 							$srt[$a['Old'][0]->start]->changedString = str_replace(array(chr(10), "\\n"), self::NEWLINE_SEP, $a['New'][0]->string);

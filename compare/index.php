@@ -7,6 +7,7 @@ session_start();
 <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
 <link rel="stylesheet" href="../css/main.css" />
 <link rel="stylesheet" href="../css/srtdiff.css" />
+<title>LTI Subtitle Comparison Tool</title>
 </head>
 <body>
 	<div id="wrap">
@@ -53,7 +54,7 @@ if (!empty($_FILES)&&!(isset($_POST["chk_simple"]) && $_POST["chk_simple"] == "o
 } else {
 ?>
 		<div id="header">
-			<div id="srtdiff_banner"><span id="banner_title"><span style="color:#EEF1AB;letter-spacing:0.2em">S<span style="font-size:50%;letter-spacing:0.2em">o</span>RT</span><span style="font-size:80%;letter-spacing:0.5em">a</span><span style="color:#FFC5F4;">LIKE</span></span>
+			<div id="srtdiff_banner"><span id="banner_title"><a href="index.php" style="text-decoration: none"><span style="color:#EEF1AB;letter-spacing:0.2em">S<span style="font-size:50%;letter-spacing:0.2em">o</span>RT</span><span style="font-size:80%;letter-spacing:0.5em">a</span><span style="color:#FFC5F4;">LIKE</span></a></span>
 				</div>
 		</div>
 		    <div id="main">
@@ -84,7 +85,7 @@ if (!empty($_FILES)&&!(isset($_POST["chk_simple"]) && $_POST["chk_simple"] == "o
 				<label>Options:</label>
 				<div><a class="tooltip"><label>Base file :</label><input class="inputFile" name="uploadedfile[]" type="file"/><span class="classic">The file in the original language, if one wants to check the accuracy of a translation/proofread file. (Its timestamps have to be identical to the 'original file' file uploaded above)</span></a></div>
 				<div><input type="checkbox" id="chk_simple" name="chk_simple"/><a class="tooltip"><label>Just check whether files are identical<span class="classic">Shows a message indicating whether the files are identical and if not, the number of strings that changed.</span></label></a></div>
-				<div><input type="checkbox" name="chk_all"/><a class="tooltip"><label>Display strings that haven't been modified<span class="classic">In case you'd like to see the context around the strings that have been modified. This essentially displays all strings.</span></label></a></div>
+				<div><input type="checkbox" name="chk_all"/><a class="tooltip"><label>Have the choice of displaying strings that haven't been modified<span class="classic">In case you'd like to see the context around the strings that have been modified. This essentially displays all strings.</span></label></a></div>
 				<!--<div><input type="checkbox" name="chk_has_timings"/><a class="tooltip"><label>Just check the contents (no timestamp check)<span class="classic">In case you'd like to see the context around the strings that have been modified. This essentially displays all strings.</span></label></a></div> -->
 				</div>
 			</fieldset>
@@ -112,8 +113,8 @@ if (!empty($_FILES)&&!(isset($_POST["chk_simple"]) && $_POST["chk_simple"] == "o
 <div id="footer">
     <a href="http://forum.linguisticteam.org">Linguistic Team International</a>
 </div>
-<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
-<script type="text/javascript" src="../js/jquery-ui-1.9.2.js"></script>
+<script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-1.11.0.min.js"></script>
 <script type="text/javascript" src="../js/srtdiff.js"></script>	
 <script type="text/javascript">$("#srtform_error").html("<span><?php echo $result;?></span>");$('#srtform_error').addClass('errorShown');</script>
 </body>

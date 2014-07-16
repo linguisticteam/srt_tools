@@ -160,7 +160,7 @@
 .tooltip:hover span {
   position: absolute;
   left: .1em;
-  top: 290px;
+  top: 320px;
   z-index: 99;
   margin-left: 0;
   width: 420px;

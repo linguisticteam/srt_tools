@@ -331,7 +331,17 @@ class SRTAnalyzer extends SRT {
 		$m = false;
 		$handle = @fopen($file, 'r');
 		$timestamps = array();
-		$i = 1;
+		
+		$buffer = fgets($handle);
+		if (trim($buffer) != '1' && trim($buffer) != chr(239) . chr(187) . chr(191) . chr(49)) {
+			throw new FileException($file);
+		}
+		
+		if(mb_detect_encoding($buffer)!=="UTF-8"){
+			echo "<h5 style=\"color:red;border:1px solid black;padding:10px;\">It seems that the character encoding of this file is not UTF-8. For optimal results, use this tool with UTF-8 encoded files.</h5><br/>";
+		}
+		$i = 2;
+		
 		while (($buffer = fgets($handle, 4096)) !== false) {
 			switch ($i) {
 				case 2 :
@@ -343,7 +353,7 @@ class SRTAnalyzer extends SRT {
 					$lenDisplay = number_format($len / 1000, 3);
 					if (isset($total_file[$textnumlines - 1]["END"])) {
 						if ($this->strDisplayLen($total_file[$textnumlines - 1]["END"], $total_file[$textnumlines]["START"]) < 100) {
-							$error->too_fast->values[] = implode(";", array($total_file[$textnumlines]["START"]));
+							$error->no_gap->values[] = implode(";", array($total_file[$textnumlines]["START"]));
 						}
 					}
 					break;
@@ -411,7 +421,7 @@ class SRTAnalyzer extends SRT {
 		if ($this->filename > 50) {
 			echo "<h1>" . substr($this->filename, 0, 50) . "</h1><br/>";
 		} else {
-			echo "<h1>" . $this->filename . "</h1><br/>";
+			echo "<h1>" . htmlspecialchars($this->filename) . "</h1><br/>";
 		}
 		
 		echo "<h5>Average words per minute : " . $wpm . "<br/>";
@@ -433,8 +443,13 @@ class SRTAnalyzer extends SRT {
 					echo "<th scope=\"col\">" . $value . "</th>\n";
 				}
 				echo "</tr>\n</thead>\n<tbody>\n";
+				
 				foreach ($values->values as $value) {
-					echo "<tr><td>" . implode("</td><td>", $value) . "</td></tr>";
+					if(is_array($value))
+						echo "<tr><td>" . implode("</td><td>", $value) . "</td></tr>";
+					else {
+						echo "<tr><td>" . $value . "</td></tr>";
+					}
 				}
 				echo "</tbody>\n</table><br/><br/>";
 			} else {
@@ -641,6 +656,6 @@ class SRTEditor extends SRT {
 class FileException extends Exception {
 
 	public function __construct($file) {
-		echo "The file '$file' could not be read. Is it an <a href=\"http://en.wikipedia.org/wiki/.srt#SubRip_text_file_format\">SRT file</a>?";
+		echo "The selected file could not be read. Is it an <a href=\"http://en.wikipedia.org/wiki/.srt#SubRip_text_file_format\">SRT file</a>?";
 	}
 }
